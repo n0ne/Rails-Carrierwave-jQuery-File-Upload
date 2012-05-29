@@ -1,0 +1,32 @@
+.preview {
+  height: 100px;
+}
+
+.thumbnail a > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thumbnail .preview > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.files .span3 {
+  width: 220px;
+}
+
+.files .span3 .thumbnail {
+  height: 137px;
+}
+
+.progress {
+  height: 8px;
+  margin-top: 10px;
+}
+.progress-success.progress-striped .bar {
+  background-color: #7D7D7D;
+}

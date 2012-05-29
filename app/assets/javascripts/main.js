@@ -39,7 +39,7 @@ $(function () {
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
-      previewAsCanvas: false,
+      //previewAsCanvas: false,
       autoUpload: true,
       // done: function (e, data) { 
       //   // console.log(data.result.[0].url);
@@ -48,6 +48,7 @@ $(function () {
       uploadTemplate: function (o) {
         var rows = $();
         $.each(o.files, function (index, file) {
+          console.log(file);
             var row = $('<li class="span3">' +
                 '<div class="thumbnail">' +
                   '<div class="preview" style="text-align: center;"></div>' +
