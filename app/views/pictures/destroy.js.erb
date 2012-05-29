@@ -1,0 +1,1 @@
+$('#picture_<%= @picture.id %>').fadeOut();

@@ -1,25 +1,126 @@
-<%- model_class = @gallery.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+<div class="row">
+  <h1>Gallery</h1>
+  
+  <input type="hidden" id="galleryID" value="<%= @gallery.id %>">
+
+  <p>
+    <b>Name: </b>
+    <%= @gallery.name %>
+  </p>
+
+  <p>
+    <b>Description: </b>
+    <%= @gallery.description %>
+  </p>
+
+<h2>Pictures</h2>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @gallery.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @gallery.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:cover) %>:</strong></dt>
-  <dd><%= @gallery.cover %></dd>
-</dl>
+<%= form_for [@gallery, @picture], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+  <div class="row">
+    <div class=" fileupload-buttonbar">
+      <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
+      <span class="btn btn-mini fileinput-button">
+        <i class="icon-plus"></i>
+        <span><%= t('photos.add_files') %>...</span>
+        <%= f.file_field :image, :multiple => true %>        
+      </span>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <ul class="thumbnails files">
+      <% unless @pictures.empty? %>
+        <% @pictures.each do |pic| %>
+            <li class="span3" id="picture_<%= pic.id %>">
+              <div class="thumbnail">
+                <a href="<%= pic.image.url %>" rel="lightbox-pictures" title="<%= pic.description %>">
+                  <img src="<%= pic.image.thumb.url %>" alt="">
+                </a>
+                <div class="caption">
+                  <p style="text-align: center;">                    
+                    <a href="/galleries/<%= @gallery.id %>/pictures/<%= pic.id %>/edit" class="btn btn-mini">
+                      <i class="icon-edit "></i>
+                      Edit
+                    </a>
+                    <a class="btn btn-mini btn-delete" confirm="Вы уверены?" data-method="delete" href="/galleries/<%= @gallery.id %>/pictures/<%= pic.id %>" data-remote=true>
+                      <i class="icon-trash"></i>
+                      Delete
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<script>
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+</script>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              galleries_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_gallery_path(@gallery), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              gallery_path(@gallery),
-              :method => 'delete',
-              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-              :class => 'btn btn-danger' %>
+
+
+<script id="template-download" type="text/html">
+  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
+  <tr class="template-download nofade">
+    {% if (file.error) { %}
+    <td></td>
+    <td class="name">{%=file.name%}</td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td class="error" colspan="2"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
+    {% } else { %}
+    <td class="preview">{% if (file.thumbnail_url) { %}
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.thumbnail_url%}"></a>
+    {% } %}</td>
+    <td class="name">
+      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
+    </td>
+    <td class="size">{%=o.formatFileSize(file.size)%}</td>
+    <td colspan="2"></td>
+    {% } %}
+    <td class="delete">
+    <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"><%= t('photos.template.delete') %></button>
+    <input type="checkbox" name="delete" value="1">
+    </td>
+  </tr>
+  {% } %}
+</script>
+
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<%= javascript_include_tag 'jquery.ui.widget.js' %>
+<!-- The Templates and Load Image plugins are included for the FileUpload user interface
+<script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
+<script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>-->
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<%= javascript_include_tag 'jquery.iframe-transport.js' %>
+<%= javascript_include_tag 'jquery.fileupload.js' %>
+<%= javascript_include_tag 'jquery.fileupload-ui.js' %>
+<!-- add include_tag js files to config.assets.precompile in ...environments/production.rb if you have it in vendor/ assets -->
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+//      $('.btn-delete').click(function() {
+//        $.ajax({
+//        alert($(this).attr("data-url"));
+//      });
+    });
+</script>
+
+<div class="row">
+  <div class="form-actions">
+    <%= link_to 'Back', galleries_path, :class => 'btn btn-mini'  %>
+    <%= link_to 'Edit', edit_gallery_path(@gallery), :class => 'btn btn-mini' %>
+    <%= link_to 'Delete', gallery_path(@gallery), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-mini' %>
+  </div>
 </div>

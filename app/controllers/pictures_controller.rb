@@ -2,7 +2,10 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+
+    @gallery = Gallery.find(params[:gallery_id])
+
+    @pictures = @gallery.pictures
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +27,8 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = @gallery.pictures.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,16 +44,35 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(params[:picture])
+    p_attr = params[:picture]
+    p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
 
-    respond_to do |format|
-      if @picture.save
-        format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-        format.json { render json: @picture, status: :created, location: @picture }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @picture.errors, status: :unprocessable_entity }
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = @gallery.pictures.build(p_attr)
+
+    # respond_to do |format|
+    #   if @picture.save
+    #     format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
+    #     format.json { render json: @picture, status: :created, location: @picture }
+    #   else
+    #     format.html { render action: "new" }
+    #     format.json { render json: @picture.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    if @picture.save
+      respond_to do |format|
+        format.html {
+          render :json => [@picture.to_jq_upload].to_json,
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {
+          render :json => [@picture.to_jq_upload].to_json
+        }
       end
+    else
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
 
@@ -72,12 +95,13 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1
   # DELETE /pictures/1.json
   def destroy
-    @picture = Picture.find(params[:id])
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = @gallery.pictures.find(params[:id])
     @picture.destroy
 
     respond_to do |format|
-      format.html { redirect_to pictures_url }
-      format.json { head :no_content }
+      format.html { redirect_to gallery_pictures_url }
+      format.js
     end
   end
 end
