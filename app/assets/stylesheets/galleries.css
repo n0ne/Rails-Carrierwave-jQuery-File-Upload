@@ -1,0 +1,24 @@
+.preview {
+  height: 100px;
+}
+
+.thumbnail a > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.thumbnail .preview > img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.files .span3 {
+  width: 220px;
+}
+
+.files .span3 .thumbnail {
+  height: 137px;
+}

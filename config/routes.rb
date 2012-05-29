@@ -1,7 +1,8 @@
 GalleryJqueryFileUpload::Application.routes.draw do
-  resources :pictures
 
-  resources :galleries
+  resources :galleries do
+    resources :pictures
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

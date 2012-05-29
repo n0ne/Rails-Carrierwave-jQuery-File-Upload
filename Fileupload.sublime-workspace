@@ -11,7 +11,34 @@
 			"file": "Gemfile",
 			"settings":
 			{
-				"buffer_size": 850,
+				"buffer_size": 886,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/gallery.rb",
+			"settings":
+			{
+				"buffer_size": 111,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/picture.rb",
+			"settings":
+			{
+				"buffer_size": 140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# encoding: utf-8\n\nclass ImageUploader < CarrierWave::Uploader::Base\n\n  # Include RMagick or MiniMagick support:\n\n  include CarrierWave::RMagick\n  \n  # include CarrierWave::MiniMagick\n\n  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:\n  # include Sprockets::Helpers::RailsHelper\n  # include Sprockets::Helpers::IsolatedHelper\n\n  # Choose what kind of storage to use for this uploader:\n  storage :file\n  # storage :fog\n\n  # Override the directory where uploaded files will be stored.\n  # This is a sensible default for uploaders that are meant to be mounted:\n  def store_dir\n    \"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}\"\n  end\n\n  # Provide a default URL as a default if there hasn't been a file uploaded:\n  # def default_url\n  #   # For Rails 3.1+ asset pipeline compatibility:\n  #   # asset_path(\"fallback/\" + [version_name, \"default.png\"].compact.join('_'))\n  #\n  #   \"/images/fallback/\" + [version_name, \"default.png\"].compact.join('_')\n  # end\n\n  # Process files as they are uploaded:\n  # process :scale => [200, 300]\n  #\n  # def scale(width, height)\n  #   # do something\n  # end\n\n  # Create different versions of your uploaded files:\n  # version :thumb do\n  #   process :scale => [50, 50]\n  # end\n\n  # Add a white list of extensions which are allowed to be uploaded.\n  # For images you might use something like this:\n  # def extension_white_list\n  #   %w(jpg jpeg gif png)\n  # end\n\n  # Override the filename of the uploaded files:\n  # Avoid using model.id or version_name here, see uploader/store.rb for details.\n  # def filename\n  #   \"something.jpg\" if original_filename\n  # end\n\nend\n",
+			"file": "app/uploaders/image_uploader.rb",
+			"file_size": 1642,
+			"file_write_time": 1338278301000000,
+			"settings":
+			{
+				"buffer_size": 1644,
 				"line_ending": "Unix"
 			}
 		}
@@ -44,6 +71,7 @@
 	},
 	"file_history":
 	[
+		"/home/none/rails/gallery-jQuery-File-Upload/config/routes.rb",
 		"/home/none/rails/gallery_example/app/views/galleries/index.html.erb",
 		"/home/none/rails/gellery_example.good/gallery_example_good.sublime-project",
 		"/home/none/rails/gallery_example/gallery_example.sublime-project",
@@ -84,7 +112,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -92,15 +120,15 @@
 					"file": "Gemfile",
 					"settings":
 					{
-						"buffer_size": 850,
+						"buffer_size": 886,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								214
+								51,
+								51
 							]
 						],
 						"settings":
@@ -109,6 +137,86 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/models/gallery.rb",
+					"settings":
+					{
+						"buffer_size": 111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								106,
+								106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/models/picture.rb",
+					"settings":
+					{
+						"buffer_size": 140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								135,
+								135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/uploaders/image_uploader.rb",
+					"settings":
+					{
+						"buffer_size": 1644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								150,
+								150
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -167,7 +275,7 @@
 		[
 			[
 				"",
-				"/home/none/rails/gellery_example.good/gallery_example_good.sublime-project"
+				"/home/none/rails/ajax_upload/ajax-upload.sublime-project"
 			]
 		],
 		"width": 380.0

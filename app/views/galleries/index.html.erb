@@ -1,40 +1,34 @@
-<%- model_class = Gallery.new.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:cover) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="row">
+  <h1>Galleries</h1>
+  <ul class="thumbnails files">
     <% @galleries.each do |gallery| %>
-      <tr>
-        <td><%= link_to gallery.id, gallery_path(gallery) %></td>
-        <td><%= gallery.name %></td>
-        <td><%= gallery.description %></td>
-        <td><%= gallery.cover %></td>
-        <td><%=l gallery.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_gallery_path(gallery), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      gallery_path(gallery),
-                      :method => :delete,
-                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
+        <li class="span3" id="gallery_<%= gallery.id %>">
+          <div class="thumbnail">
+            <% if gallery.cover.blank? or !Picture.find_by_id(gallery.cover) %>
+              <a href="<%= gallery_path(:id => gallery.id) %>">
+                <img src="/assets/NoImageAvailable.jpg" alt="">
+              </a>
+            <% else %>
+              <a href="<%= gallery_path(:id => gallery.id) %>">
+                <img src="<%= Picture.find_by_id(gallery.main_image).image.thumb.url %>" alt="">
+              </a>
+            <% end %>
+            <div class="caption">
+              <p style="text-align: center;">
+                <a href="<%= edit_gallery_path(:id => gallery.id) %>" class="btn btn-mini">
+                  <i class="icon-edit "></i>
+                  Edit
+                </a>
+                <a class="btn btn-mini btn-delete" confirm="Вы уверены?" data-method="delete" href="<%= gallery_path(:id => gallery.id) %>" data-remote=true>
+                  <i class="icon-trash"></i>
+                  Delete
+                </a>
+              </p>
+            </div>
+          </div>
+        </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_gallery_path,
-            :class => 'btn btn-primary' %>
+  <%= link_to 'New', new_gallery_path, :class => 'btn btn-mini' %>
+</div>
