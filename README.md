@@ -2,7 +2,7 @@
 
 A small application that demonstrates the work of these programs together.
 
-More information about [jQuery File Upload](http://valums.com/ajax-upload/) or on [Github](https://github.com/valums/file-uploader)
+More information about [jQuery File Upload](http://blueimp.github.com/jQuery-File-Upload/) or on [Github](https://github.com/blueimp/jQuery-File-Upload)
 
 We use [slimbox2](http://www.digitalia.be/software/slimbox2) plugin for viewing pictures.
 And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing pictures
