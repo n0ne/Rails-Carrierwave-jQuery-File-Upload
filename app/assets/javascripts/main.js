@@ -23,7 +23,8 @@ $(function () {
     };
 
     $('#cropbox').Jcrop({
-
+      boxWidth: 770,
+      boxHeight: 433,
 //      update: function(coords) {
 //        $('#user_crop_x').val(coords.x)
 //        $('#user_crop_y').val(coords.y)
@@ -98,7 +99,7 @@ $(function () {
     downloadTemplate: function (o) {
         var rows = $();
         $.each(o.files, function (index, file) {
-            var row = $('<li class="span3" id="picture_' + file.id + '">' +
+            var row = $('<li class="span3" id="picture_' + file.picture_id + '">' +
                 (file.error ? '<div class="name"></div>' +
                     '<div class="size"></div><div class="error" ></div>' :
                       '<div class="thumbnail">' +
@@ -107,7 +108,7 @@ $(function () {
                         '</a>' +
                         '<div class="caption">' +
                           '<p style="text-align: center;">' +
-                            '<a href="#" class="btn btn-mini btn-show" style="margin-right: 4px;">' +
+                            '<a href="" class="btn btn-mini btn-show" style="margin-right: 4px;">' +
                               '<i class="icon-edit "></i>' +
                               'Edit' +
                             '</a>' +
@@ -141,9 +142,9 @@ $(function () {
                 }
 //                row.find('a').prop('href', file.url);
                 row.find('.btn-delete')
-                    .attr('href', '/galleries/' + $("#galleryID").val() + '/pictures/' + file.id);
+                    .attr('href', '/galleries/' + $("#galleryID").val() + '/pictures/' + file.picture_id);
                 row.find('.btn-show')
-                    .attr('href', file.id + '/edit');
+                    .attr('href', '/galleries/' + $("#galleryID").val() + '/pictures/' + file.picture_id + '/edit');
             }            
             rows = rows.add(row);
         });

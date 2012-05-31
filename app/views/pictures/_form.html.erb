@@ -1,26 +1,36 @@
-<%= form_for @picture, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [@gallery, @picture], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :image, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :gallery_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :gallery_id, :class => 'number_field' %>
-    </div>
-  </div>
+  
+    <%= image_tag @picture.image.large.url, :id => 'cropbox' %>
+  
+  <% %w[x y w h].each do |attribute| %>
+    <%= f.hidden_field "crop_#{attribute}" %>
+  <% end %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.submit nil, :class => 'btn btn-primary  btn-mini' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                pictures_path, :class => 'btn' %>
+                gallery_path(@gallery), :class => 'btn btn-mini' %>
+    <%= link_to 'Default', '', :class => 'btn btn-mini btn-success' , :id => 'make_default'%>
+
   </div>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+      $('#make_default').click(function(event) {
+        event.preventDefault();
+//        alert("Test");
+        $.ajax({
+          url: '<%= make_default_gallery_pictures_path %>',
+          type: 'POST',
+          data: {id : <%= @picture.id %>, gallery_id : <%= @gallery.id %>}
+        });
+      });
+    });
+</script>

@@ -10,7 +10,7 @@
               </a>
             <% else %>
               <a href="<%= gallery_path(:id => gallery.id) %>">
-                <img src="<%= Picture.find_by_id(gallery.main_image).image.thumb.url %>" alt="">
+                <img src="<%= Picture.find_by_id(gallery.cover).image.thumb.url %>" alt="">
               </a>
             <% end %>
             <div class="caption">

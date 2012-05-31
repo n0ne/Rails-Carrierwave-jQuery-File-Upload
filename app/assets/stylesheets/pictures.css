@@ -30,3 +30,13 @@
 .progress-success.progress-striped .bar {
   background-color: #7D7D7D;
 }
+
+img {
+  max-width: none;
+}
+.form-horizontal .control-label {
+  text-align: left;
+}
+.form-horizontal input.text_field {
+  width: 600px;
+}
