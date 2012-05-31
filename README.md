@@ -17,9 +17,8 @@ git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
 
 * Change folder:
 
-```ruby
-cd Rails-Carrierwave-jQuery-File-Upload
-```
+          cd Rails-Carrierwave-jQuery-File-Upload
+
 
 * Make database:
 
