@@ -11,9 +11,8 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
 
 * Clone git:
 
-```ruby
-git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
-```
+          git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
+                    
 
 * Change folder:
 
@@ -22,18 +21,15 @@ git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
 
 * Make database:
 
-```ruby
-rake db:migrate
-```
+          rake db:migrate
+
 
 * Start server:
 
-```ruby
-rails s
-```
+          rails s
+
 
 * Open brawser:
 
-```ruby
-http://localhost:3000/
-```
+
+          http://localhost:3000/
