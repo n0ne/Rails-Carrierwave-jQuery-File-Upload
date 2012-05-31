@@ -25,7 +25,6 @@
     $(function () {
       $('#make_default').click(function(event) {
         event.preventDefault();
-//        alert("Test");
         $.ajax({
           url: '<%= make_default_gallery_pictures_path %>',
           type: 'POST',

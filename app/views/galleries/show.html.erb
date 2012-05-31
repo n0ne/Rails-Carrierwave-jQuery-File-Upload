@@ -96,26 +96,14 @@
 </script>
 
 
-<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+
 <%= javascript_include_tag 'jquery.ui.widget.js' %>
-<!-- The Templates and Load Image plugins are included for the FileUpload user interface
-<script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
-<script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>-->
-<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <%= javascript_include_tag 'jquery.iframe-transport.js' %>
 <%= javascript_include_tag 'jquery.fileupload.js' %>
 <%= javascript_include_tag 'jquery.fileupload-ui.js' %>
-<!-- add include_tag js files to config.assets.precompile in ...environments/production.rb if you have it in vendor/ assets -->
 
 
-<script type="text/javascript" charset="utf-8">
-    $(function () {
-//      $('.btn-delete').click(function() {
-//        $.ajax({
-//        alert($(this).attr("data-url"));
-//      });
-    });
-</script>
+
 
 <div class="row">
   <div class="form-actions">

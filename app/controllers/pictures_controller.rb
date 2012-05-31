@@ -52,17 +52,7 @@ class PicturesController < ApplicationController
 
     @gallery = Gallery.find(params[:gallery_id])
     @picture = @gallery.pictures.build(p_attr)
-
-    # respond_to do |format|
-    #   if @picture.save
-    #     format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
-    #     format.json { render json: @picture, status: :created, location: @picture }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @picture.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
+    
     if @picture.save
       respond_to do |format|
         format.html {
@@ -86,8 +76,6 @@ class PicturesController < ApplicationController
     @gallery = Gallery.find(params[:gallery_id])
 
     @picture = @gallery.pictures.find(params[:id])
-
-    # @picture = Picture.find(params[:id])
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])

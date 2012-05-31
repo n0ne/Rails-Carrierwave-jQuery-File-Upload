@@ -15,7 +15,6 @@ class GalleriesController < ApplicationController
   def show
     @gallery = Gallery.find(params[:id])
     @picture = @gallery.pictures.build
-    # @pictures = @gallery.pictures
     @pictures = Picture.find(:all, :conditions  => [ 'gallery_id = ?', @gallery.id ])
     respond_to do |format|
       format.html # show.html.erb
