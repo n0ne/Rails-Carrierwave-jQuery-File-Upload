@@ -10,9 +10,9 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
 # Getting Started
 
 1. Clone git:
-
-       git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
-
+```ruby
+git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
+```
 2. Change folder:
 
        cd Rails-Carrierwave-jQuery-File-Upload
