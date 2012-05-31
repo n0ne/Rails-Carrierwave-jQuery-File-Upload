@@ -7,7 +7,7 @@ More information about [jQuery File Upload](http://valums.com/ajax-upload/) or o
 We use [slimbox2](http://www.digitalia.be/software/slimbox2) plugin for viewing pictures.
 And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing pictures
 
-# Getting Started
+## Getting Started
 
 1. Clone git:
 
@@ -17,16 +17,24 @@ git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
 
 2. Change folder:
 
-       cd Rails-Carrierwave-jQuery-File-Upload
+```ruby
+cd Rails-Carrierwave-jQuery-File-Upload
+```
 
 3. Make database:
 
-       rake db:migrate
+```ruby
+rake db:migrate
+```
 
 4. Start server:
 
-       rails s
+```ruby
+rails s
+```
 
 5. Open brawser:
 
-       http://localhost:3000/
+```ruby
+http://localhost:3000/
+```
