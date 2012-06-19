@@ -29,7 +29,7 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
           rails s
 
 
-* Open brawser:
+* Open browser:
 
 
           http://localhost:3000/
