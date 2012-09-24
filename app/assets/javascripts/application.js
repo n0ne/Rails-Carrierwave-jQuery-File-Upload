@@ -20,7 +20,6 @@
 
 //= require load-image.min
 //= require canvas-to-blob.min
-//= require bootstrap-image-gallery.min
 //= require jquery.iframe-transport
 //= require jquery.fileupload
 //= require jquery.fileupload-ip
@@ -33,3 +32,4 @@
 //= require slimbox2
 
 //= require twitter/bootstrap
+//= require bootstrap-image-gallery.min
