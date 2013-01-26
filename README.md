@@ -18,18 +18,22 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
 
           cd Rails-Carrierwave-jQuery-File-Upload
 
+* Install gems:
+
+          bundle install
 
 * Make database:
 
           rake db:migrate
 
+* Upgrade bootstrap files:
+
+          rails g bootstrap:install -f
 
 * Start server:
 
           rails s
 
-
 * Open browser:
 
-
-          http://localhost:3000/
+          http://localhost:3000/galleries
