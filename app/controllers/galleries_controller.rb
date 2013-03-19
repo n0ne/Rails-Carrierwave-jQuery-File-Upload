@@ -26,6 +26,9 @@ class GalleriesController < ApplicationController
   # GET /galleries/new.json
   def new
     @gallery = Gallery.new
+    @gallery.token = @gallery.generate_token
+    @picture = @gallery.pictures.build
+    @pictures = []
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +45,8 @@ class GalleriesController < ApplicationController
   # POST /galleries.json
   def create
     @gallery = Gallery.new(params[:gallery])
+    @pictures = Picture.where(:gallery_token => @gallery.token)
+    @gallery.pictures << @pictures
 
     respond_to do |format|
       if @gallery.save
