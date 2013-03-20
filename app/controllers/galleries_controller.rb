@@ -39,6 +39,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/1/edit
   def edit
     @gallery = Gallery.find(params[:id])
+    @picture = @gallery.pictures.build
+    @pictures = []
   end
 
   # POST /galleries
