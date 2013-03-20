@@ -50,9 +50,13 @@ class PicturesController < ApplicationController
     p_attr = params[:picture]
     p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
 
-    @gallery = Gallery.find(params[:gallery_id])
-    @picture = @gallery.pictures.build(p_attr)
-    
+    if params[:gallery_id]
+      @gallery = Gallery.find(params[:gallery_id])
+      @picture = @gallery.pictures.build(p_attr)
+    else
+      @picture = Picture.new(p_attr)
+    end
+
     if @picture.save
       respond_to do |format|
         format.html {
