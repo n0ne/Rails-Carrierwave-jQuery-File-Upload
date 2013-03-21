@@ -15,6 +15,7 @@
             <% end %>
             <div class="caption">
               <p style="text-align: center;">
+                <%= gallery.name.truncate(14) %>
                 <a href="<%= edit_gallery_path(:id => gallery.id) %>" class="btn btn-mini">
                   <i class="icon-edit "></i>
                   Edit

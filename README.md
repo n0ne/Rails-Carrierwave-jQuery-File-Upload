@@ -12,7 +12,6 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
 * Clone git:
 
           git clone git@github.com:n0ne/Rails-Carrierwave-jQuery-File-Upload.git
-                    
 
 * Change folder:
 
@@ -37,3 +36,7 @@ And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing 
 * Open browser:
 
           http://localhost:3000/galleries
+
+## Features
+
+- (20-Mar-2013): Can now add images to a gallery when it's "new" (ie. before it has been saved)

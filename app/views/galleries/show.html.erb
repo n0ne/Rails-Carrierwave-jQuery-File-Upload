@@ -1,6 +1,6 @@
 <div class="row">
   <h1>Gallery</h1>
-  
+
   <input type="hidden" id="galleryID" value="<%= @gallery.id %>">
 
   <p>
@@ -23,7 +23,7 @@
       <span class="btn btn-mini fileinput-button">
         <i class="icon-plus"></i>
         <span><%= t('photos.add_files') %>...</span>
-        <%= f.file_field :image, :multiple => true %>        
+        <%= f.file_field :image, :multiple => true %>
       </span>
     </div>
   </div>
@@ -38,7 +38,7 @@
                   <img src="<%= pic.image.thumb.url %>" alt="">
                 </a>
                 <div class="caption">
-                  <p style="text-align: center;">                    
+                  <p style="text-align: center;">
                     <a href="/galleries/<%= @gallery.id %>/pictures/<%= pic.id %>/edit" class="btn btn-mini">
                       <i class="icon-edit "></i>
                       Edit
