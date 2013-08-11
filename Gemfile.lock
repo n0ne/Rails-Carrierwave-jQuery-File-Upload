@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
+  revision: 184e371a06ae881ff685b1320cfced00c5e5f9ae
+  specs:
+    twitter-bootstrap-rails (2.2.7)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,47 +39,66 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    builder (3.0.0)
-    carrierwave (0.6.2)
+    builder (3.0.4)
+    carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+      json (>= 1.7)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.3.3)
+    coffee-script-source (1.6.3)
     commonjs (0.2.6)
     erubis (2.7.0)
+    excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    hike (1.2.1)
-    i18n (0.6.0)
-    journey (1.0.3)
-    jquery-rails (2.0.2)
-      railties (>= 3.2.0, < 5.0)
-      thor (~> 0.14)
-    json (1.7.3)
-    less (2.2.1)
+    fog (1.14.0)
+      builder
+      excon (~> 0.25.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5)
+      ruby-hmac
+    formatador (0.2.4)
+    hike (1.2.3)
+    i18n (0.6.4)
+    journey (1.0.4)
+    jquery-rails (3.0.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    json (1.8.0)
+    less (2.3.2)
       commonjs (~> 0.2.6)
-    less-rails (2.2.3)
+    less-rails (2.3.3)
       actionpack (>= 3.1)
-      less (~> 2.2.0)
-    libv8 (3.3.10.4)
+      less (~> 2.3.1)
+    libv8 (3.11.8.17)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.18)
-    multi_json (1.3.6)
+    mime-types (1.23)
+    mini_portile (0.5.1)
+    multi_json (1.7.8)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.8)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     polyglot (0.3.3)
-    rack (1.4.1)
+    rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-ssl (1.3.2)
+    rack-ssl (1.3.3)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
     rails (3.2.3)
       actionmailer (= 3.2.3)
@@ -86,14 +115,16 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.6)
-    rake (0.9.2.2)
-    rdoc (3.12)
+    rake (10.1.0)
+    rdoc (3.12.2)
       json (~> 1.4)
-    rmagick (2.13.1)
+    ref (1.0.5)
+    rmagick (2.13.2)
+    ruby-hmac (0.4.0)
     russian (0.6.0)
       i18n (>= 0.5.0)
-    sass (3.1.19)
-    sass-rails (3.2.5)
+    sass (3.2.10)
+    sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
@@ -101,23 +132,19 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
+    sqlite3 (1.3.7)
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
     thor (0.14.6)
-    tilt (1.3.3)
-    treetop (1.4.10)
+    tilt (1.4.1)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.0.8)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.2)
-      railties (>= 3.1)
-      therubyracer (~> 0.10.1)
-    tzinfo (0.3.33)
-    uglifier (1.2.4)
+    tzinfo (0.3.37)
+    uglifier (2.1.2)
       execjs (>= 0.3.0)
-      multi_json (>= 1.0.2)
+      multi_json (~> 1.0, >= 1.0.2)
 
 PLATFORMS
   ruby
@@ -125,12 +152,14 @@ PLATFORMS
 DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
+  fog
   jquery-rails
+  less-rails
   rails (= 3.2.3)
   rmagick
   russian (~> 0.6.0)
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
-  twitter-bootstrap-rails
+  twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

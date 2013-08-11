@@ -93,7 +93,7 @@ $(function () {
                     .attr('href', '/galleries/' + $("#galleryID").val() + '/pictures/' + file.picture_id);
                 row.find('.btn-show')
                     .attr('href', '/galleries/' + $("#galleryID").val() + '/pictures/' + file.picture_id + '/edit');
-            }            
+            }
             rows = rows.add(row);
         });
         return rows;

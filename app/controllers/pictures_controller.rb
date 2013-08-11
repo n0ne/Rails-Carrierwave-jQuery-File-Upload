@@ -48,7 +48,9 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     p_attr = params[:picture]
+    Rails.logger.debug("[debug] : #{p_attr}" );
     p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
+    Rails.logger.debug("[debug] : #{p_attr[:image]}" );
 
     if params[:gallery_id]
       @gallery = Gallery.find(params[:gallery_id])
