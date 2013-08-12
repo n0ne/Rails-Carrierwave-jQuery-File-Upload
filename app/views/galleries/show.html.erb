@@ -18,7 +18,7 @@
 
 <%= form_for [@gallery, @picture], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
   <div class="row">
-    <div class=" fileupload-buttonbar">
+    <div class="fileupload-buttonbar">
       <div class="progressbar fileupload-progressbar nofade"><div style="width:0%;"></div></div>
       <span class="btn btn-mini fileinput-button">
         <i class="icon-plus"></i>
@@ -56,54 +56,6 @@
     </ul>
   </div>
 <% end %>
-<script>
-  var fileUploadErrors = {
-    maxFileSize: 'File is too big',
-    minFileSize: 'File is too small',
-    acceptFileTypes: 'Filetype not allowed',
-    maxNumberOfFiles: 'Max number of files exceeded',
-    uploadedBytes: 'Uploaded bytes exceed file size',
-    emptyResult: 'Empty file upload result'
-  };
-</script>
-
-
-
-<script id="template-download" type="text/html">
-  {% for (var i=0, files=o.files, l=files.length, file=files[0]; i<l; file=files[++i]) { %}
-  <tr class="template-download nofade">
-    {% if (file.error) { %}
-    <td></td>
-    <td class="name">{%=file.name%}</td>
-    <td class="size">{%=o.formatFileSize(file.size)%}</td>
-    <td class="error" colspan="2"><span class="label important">Error</span> {%=fileUploadErrors[file.error] || file.error%}</td>
-    {% } else { %}
-    <td class="preview">{% if (file.thumbnail_url) { %}
-      <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery"><img src="{%=file.thumbnail_url%}"></a>
-    {% } %}</td>
-    <td class="name">
-      <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}">{%=file.name%}</a>
-    </td>
-    <td class="size">{%=o.formatFileSize(file.size)%}</td>
-    <td colspan="2"></td>
-    {% } %}
-    <td class="delete">
-    <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"><%= t('photos.template.delete') %></button>
-    <input type="checkbox" name="delete" value="1">
-    </td>
-  </tr>
-  {% } %}
-</script>
-
-
-
-<%= javascript_include_tag 'jquery.ui.widget.js' %>
-<%= javascript_include_tag 'jquery.iframe-transport.js' %>
-<%= javascript_include_tag 'jquery.fileupload.js' %>
-<%= javascript_include_tag 'jquery.fileupload-ui.js' %>
-
-
-
 
 <div class="row">
   <div class="form-actions">
