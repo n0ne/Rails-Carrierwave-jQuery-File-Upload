@@ -7,6 +7,8 @@ More information about [jQuery File Upload](http://blueimp.github.com/jQuery-Fil
 We use [slimbox2](http://www.digitalia.be/software/slimbox2) plugin for viewing pictures.
 And we use plugin [jCrop](http://deepliquid.com/content/Jcrop.html) for editing pictures.
 
+Thanx to [Shaunak Vairagare](https://github.com/shaunakv1/) for the [S3 version](https://github.com/shaunakv1/Rails-Carrierwave-S3-jQuery-File-Upload).
+
 ## Getting Started
 
 * Clone git:
